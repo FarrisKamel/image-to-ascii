@@ -11,8 +11,8 @@ def imageToAscii(image):
     # image.show()
     
     width, height = image.size
-    image = image.resize((width//4, height//4))
-    # image.show() 
+    image = image.resize((width//10, height//10))
+    image.show() 
     ascii_1 = "."
     ascii_2 = ","
     ascii_3 = "-"
@@ -27,9 +27,9 @@ def imageToAscii(image):
     img_array = np.asarray(image)
     img_shape = img_array.shape
     img_rows, img_col = img_shape[0], img_shape[1]
-    print(img_rows)
-    print(img_col)
-    buffer = [[0]*img_col]*img_rows
+    # print(img_rows)
+    # print(img_col)
+    buffer = [['']*img_col for _ in range(img_rows)]
     color_values = [0,0,0]
     color_average = 0
 
@@ -40,28 +40,25 @@ def imageToAscii(image):
             color_average = int(sum(color_values)/len(color_values))
             if color_average < 30:
                 buffer[i][j] = ascii_1
-            elif color_average > 30 and color_average < 60:
+            elif color_average < 60:
                 buffer[i][j] = ascii_2
-            elif color_average > 60 and color_average < 90:
+            elif color_average < 90:
                 buffer[i][j] = ascii_3
-            elif color_average > 90 and color_average < 120:
+            elif color_average < 120:
                 buffer[i][j] = ascii_4
-            elif color_average > 120 and color_average < 150:
+            elif color_average < 150:
                 buffer[i][j] = ascii_5
-            elif color_average > 150 and color_average < 180:
+            elif color_average < 180:
                 buffer[i][j] = ascii_6
-            elif color_average > 180 and color_average < 210:
+            elif color_average < 210:
                 buffer[i][j] = ascii_7
-            elif color_average > 210 and color_average < 240:
+            elif color_average < 240:
                 buffer[i][j] = ascii_8
             else:
                 buffer[i][j] = ascii_9
 
-    for i in range(len(buffer)):
-        for j in range(len(buffer[i])):
-            print(buffer[i][j], end="")
-        print("")
-
+    for row in buffer:
+        print(''.join(row))
     # print(buffer)
     # print("")
     # print(img_array)
