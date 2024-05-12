@@ -8,11 +8,13 @@ This program was broken into 2 parts:
 
 # How To Run
 Make sure that you have the following libraries install in your virtual environment
+'   
     Opencv
     Numpy
     Pillow
     Time
     OS
+'
 
 Then simply run:
     python3 project.py
